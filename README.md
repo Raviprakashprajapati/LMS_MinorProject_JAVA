@@ -1,18 +1,27 @@
-## Getting Started
+# Library Management System
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-## Folder Structure
+This is a simple command-line library management system implemented in Java. It allows users to manage books and students in a library. The system provides functionalities for adding books and students, issuing and returning books, searching for books by ID, modifying book information, and deleting books and students.
 
-The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Features
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- **Display Books**: View the list of all books in the library.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- **Display Students**: View the list of all registered students.
 
-## Dependency Management
+- **Add Book**: Add a new book to the library's collection.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- **Add Student**: Register a new student in the system.
+
+- **Issue Book**: Loan a book to a student.
+
+- **Return Book**: Accept a returned book from a student.
+
+- **Search Book By ID**: Search for a book by its unique ID.
+
+- **Modify Book By ID**: Update information for a specific book.
+
+- **Delete Book By ID**: Remove a book from the library.
+
+- **Delete Student**: Unregister a student from the system.
