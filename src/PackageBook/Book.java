@@ -113,20 +113,34 @@ public class Book {
         try {
             File fp = new File("Book.txt");
             if (fp.exists()) {
-                FileWriter fa = new FileWriter(fp, true); // Use append mode
-
-                fa.write("\n" + this.BookId + " " + newStr + " " + newStrAuthor + " " + this.BookPages + " "
-                        + this.BookPrice
-                        + " " + this.BookAvailable);
-                fa.close(); // Close the FileWriter
-                System.out.println("Data appended");
+                
+                try (Scanner scan = new Scanner(fp)) {
+                    if(scan.hasNextLine())
+                    {
+                        FileWriter fa = new FileWriter(fp, true); // Use append mode
+                        fa.write("\n" + this.BookId + " " + newStr + " " + newStrAuthor + " " + this.BookPages + " "
+                                + this.BookPrice
+                                + " " + this.BookAvailable);
+                        fa.close(); // Close the FileWriter
+   
+                    }else{
+                                        FileWriter fa = new FileWriter(fp, true); // Use append mode
+                        fa.write( + this.BookId + " " + newStr + " " + newStrAuthor + " " + this.BookPages + " "
+                                + this.BookPrice
+                                + " " + this.BookAvailable);
+                        fa.close(); // Close the FileWriter
+   
+                        
+                    }
+                }
+                System.out.println("\nBook Added");
             } else {
                 FileWriter fw = new FileWriter(fp);
-                fw.write("\n" + this.BookId + " " + newStr + " " + newStrAuthor + " " + this.BookPages + " "
+                fw.write(this.BookId + " " + newStr + " " + newStrAuthor + " " + this.BookPages + " "
                         + this.BookPrice
                         + " " + this.BookAvailable);
                 fw.close(); // Close the FileWriter
-                System.out.println("Data written");
+                System.out.println("\nBook Added");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -155,13 +169,13 @@ public class Book {
 
                     scan.close(); // Close the Scanner
                 } else {
-                    System.out.println("There is nothing in File");
+                    System.out.println("\nThere is nothing in File");
                 }
             } else {
-                System.out.println("File not exists");
+                System.out.println("\nFile not exists");
             }
         } catch (Exception e) {
-            System.out.println("ERROR IN DISPLAY " + e);
+            System.out.println("\nERROR IN DISPLAY " + e);
         }
     }
 
@@ -169,9 +183,9 @@ public class Book {
         File fp = new File("Book.txt");
         if (fp.exists()) {
             fp.delete();
-            System.out.println("Book.txt Deleted");
+            System.out.println("\nBook.txt Deleted");
         } else {
-            System.out.println("Book.txt is not exists");
+            System.out.println("\nBook.txt is not exists");
 
         }
 
@@ -209,14 +223,14 @@ public class Book {
                 }
 
                 if (!found) {
-                    System.out.println("Book with ID " + id + " not found.");
+                    System.out.println("\nBook with ID " + id + " not found.");
                 }
                 scan.close();
 
             }
 
             else {
-                System.out.println("File not found ");
+                System.out.println("\nFile not found ");
             }
 
         } catch (Exception e) {
@@ -265,17 +279,17 @@ public class Book {
                         ffw.write(string + "\n");
                     }
                     ffw.close();
-                    System.out.println("Book with ID " + id + " deleted.");
+                    System.out.println("\nBook with ID " + id + " deleted.");
                 } else {
-                    System.out.println("Book with ID " + id + " not present.");
+                    System.out.println("\nBook with ID " + id + " not present.");
                 }
 
 
             } else {
-                System.out.println("File does not exist.");
+                System.out.println("\nFile does not exist.");
             }
         } catch (Exception e) {
-            System.out.println(" ERROR IN DELETING BY ID " + e);
+            System.out.println(" \nERROR IN DELETING BY ID " + e);
         }
 
         File ff = new File("NewBook.txt");
@@ -351,7 +365,7 @@ public class Book {
                                     break;
 
                                 } else {
-                                    System.out.println("Book is already issued cannot be delete");
+                                    System.out.println("\nBook is already issued cannot be delete");
                                     return;
                                 }
 
@@ -398,7 +412,7 @@ public class Book {
                         }
 
                     } else {
-                        System.out.println("File has no Data\n");
+                        System.out.println("\nFile has no Data");
                     }
                     // System.out.println("Book with "+id+ " ID is not present \n" );
                 }
@@ -409,7 +423,7 @@ public class Book {
             }
 
             else {
-                System.out.println("File not found ");
+                System.out.println("\nFile not found ");
             }
 
         } catch (Exception e) {

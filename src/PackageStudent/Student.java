@@ -41,7 +41,7 @@ public class Student {
                 } // Scanner is automatically closed here
             }
         } catch (Exception e) {
-            System.out.println("ERROR IN CHECKING STUDENT ID");
+            System.out.println("\nERROR IN CHECKING STUDENT ID");
         }
         return flag;
     }
@@ -69,13 +69,13 @@ public class Student {
 
                     scan.close(); // Close the Scanner
                 } else {
-                    System.out.println("There is nothing in File");
+                    System.out.println("\nThere is nothing in File");
                 }
             } else {
-                System.out.println("File not exists");
+                System.out.println("\nFile not exists");
             }
         } catch (Exception e) {
-            System.out.println("ERROR IN DISPLAY " + e);
+            System.out.println("\nERROR IN DISPLAY " + e);
         }
 
     }
@@ -104,7 +104,7 @@ public class Student {
             }
 
         } catch (Exception e) {
-            System.out.println("ERROR IN ADDING STUDENT");
+            System.out.println("\nERROR IN ADDING STUDENT");
         }
 
         this.studentId = id;
@@ -125,22 +125,36 @@ public class Student {
             File fp = new File("Student.txt");
             // append
             if (fp.exists()) {
-                FileWriter fa = new FileWriter(fp, true); // Use append mode
+                
+                try (Scanner scan = new Scanner(fp)) {
+                    if(scan.hasNextLine())
+                    {
+                        FileWriter fa = new FileWriter(fp, true); // Use append mode
+                        fa.write("\n" + this.studentId + " " + newStr + " " + this.studentContact + " "
+                                + this.studentIssueOrNot + " " + this.studentTotleBookId);
+                        fa.close(); // Close the FileWriter
 
-                fa.write("\n" + this.studentId + " " + newStr + " " + this.studentContact + " "
-                        + this.studentIssueOrNot + " " + this.studentTotleBookId);
-                fa.close(); // Close the FileWriter
+                    }
+                    else{
+                        FileWriter fa = new FileWriter(fp, true); // Use append mode
+                        fa.write( this.studentId + " " + newStr + " " + this.studentContact + " "
+                                + this.studentIssueOrNot + " " + this.studentTotleBookId);
+                        fa.close(); // Close the FileWriter
+
+
+                    }
+                }
                 System.out.println("\nStudent Added");
             } else {
                 // first student write
                 FileWriter fw = new FileWriter(fp);
-                fw.write("\n" + this.studentId + " " + newStr + " " + this.studentContact + " "
+                fw.write( this.studentId + " " + newStr + " " + this.studentContact + " "
                         + this.studentIssueOrNot + " " + this.studentTotleBookId);
                 fw.close(); // Close the FileWriter
                 System.out.println("\nStudent Added");
             }
         } catch (Exception e) {
-            System.out.println("ERROR IN ADDING STUDENT " + e);
+            System.out.println("\nERROR IN ADDING STUDENT " + e);
         }
 
     }
@@ -150,13 +164,30 @@ public class Student {
         try {
 
             ArrayList<String> ll = new ArrayList<>();
+
             File studentFp = new File("Student.txt");
             try (Scanner scan = new Scanner(studentFp)) {
                 while (scan.hasNextLine()) {
                     ll.add(scan.nextLine());
                 }
             }
-           
+
+            //checking if bookID already issued by someone
+            File checkFp = new File("Book.txt");
+            try (Scanner checkScan = new Scanner(checkFp)) {
+                while (checkScan.hasNextLine()) {
+                    String[] split = checkScan.nextLine().split(" ");
+                    if(bookId==Integer.parseInt(split[0]))
+                    {
+                        if(split[5].equals("NO"))
+                        {
+                            System.out.println("\nBook has already issued by other student");
+                            return;
+                        }
+                    }
+                }
+            }
+
 
             // if studetnid equal
             for (int i = 0; i < ll.size(); i++) {
@@ -171,7 +202,7 @@ public class Student {
 
                         if(Integer.parseInt(split[3])<3)
                         {
-                            System.out.println(Integer.parseInt(split[3]));
+                            
                             // coolection of bookID
                         String bookCollection[] = split[4].split(",");
                         ArrayList<String> bookCollectList = new ArrayList<String>();
@@ -261,7 +292,7 @@ public class Student {
             System.out.println("\nBook Issued");
 
         } catch (Exception e) {
-            System.out.println("ERROR IN ISSUING BOOK - " + e);
+            System.out.println("\nERROR IN ISSUING BOOK - " + e);
         }
 
     }
@@ -304,16 +335,16 @@ public class Student {
                         }
                     }
                     ffw.close();
-                    System.out.println("Student with ID " + stdId + " deleted.");
+                    System.out.println("\nStudent with ID " + stdId + " deleted.");
                 } else {
                     System.out.println("\nStudent with ID " + stdId + " cannot be delete! he did not return all Books yet.");
                 }
 
             } else {
-                System.out.println("File does not exist.");
+                System.out.println("\nFile does not exist.");
             }
         } catch (Exception e) {
-            System.out.println(" ERROR IN DELETING BY ID " + e);
+            System.out.println("\nERROR IN DELETING BY ID " + e);
         }
 
     }
@@ -516,7 +547,7 @@ public class Student {
 
 
         } catch (Exception e) {
-            System.out.println("ERROR IN RETURNING THE BOOK ");
+            System.out.println("\nERROR IN RETURNING THE BOOK ");
         }
         
 

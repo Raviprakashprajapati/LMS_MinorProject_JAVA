@@ -1,4 +1,6 @@
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,7 +53,8 @@ public class App {
     }
 
     static void addBookMain(Book store) {
-        System.out.println("[ Adding Book ]");
+       try {
+         System.out.println("[ Adding Book ]");
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter Book Id: ");
         int id = scan.nextInt();
@@ -65,11 +68,16 @@ public class App {
         System.out.println("Enter Book Price: ");
         int price = scan.nextInt();
         store.addBook(id, name, author, page, price);
+       } catch (Exception e) {
+    System.out.println("\nEnter valid detail");   
+    }
 
     }
 
     static void searchBookByIdMain(Book store) {
-        System.out.println("[ Enter Book ID For Searching ]");
+
+       try {
+         System.out.println("[ Enter Book ID For Searching ]");
         Scanner scan = new Scanner(System.in);
         int id = scan.nextInt();
         headerMain();
@@ -77,6 +85,11 @@ public class App {
         for (int i = 0; i < 100; i++) {
             System.out.print("=");
         }
+        
+       } catch (Exception e) {
+        System.out.println("\nEnter Valid Details");
+    }
+
     }
 
     static void displayBookMain(Book store) {
@@ -93,22 +106,30 @@ public class App {
 
     static void deleteBookByIdMain(Book store) {
 
-        System.out.println("[ Deleting Book By ID ]");
+        try {
+            System.out.println("[ Deleting Book By ID ]");
         Scanner scan = new Scanner(System.in);
         int id = scan.nextInt();
         store.deleteBookById(id);
-        // scan.close();
+        } catch (Exception e) {
+        System.out.println("\nEnter valid detail");
+        }
+       
     }
 
     static void modifyBookByIdMain(Book store) {
-        System.out.println("[ Enter Book Id For Modification ]");
+        try {
+            System.out.println("[ Enter Book Id For Modification ]");
         Scanner scan = new Scanner(System.in);
         int id = scan.nextInt();
         store.modifyBookById(id);
+        } catch (Exception e) {
+        System.out.println("\nEnter valid details");}
     }
 
     static void addStudentMain(Student std) {
-        System.out.println("[ Add Student ]");
+      try {
+          System.out.println("[ Add Student ]");
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Student Id");
         int id = sc.nextInt();
@@ -118,6 +139,9 @@ public class App {
         System.out.println("Enter Student Contact No.:");
         String phone = sc.nextLine();
         std.addStudent(id, name, phone, "0", "null");
+      } catch (Exception e) {
+    System.out.println("Enter valid detail");  
+    }
        
 
     }
@@ -166,7 +190,8 @@ public class App {
 
     static void returnBookByMain(Student std,Book store)
     {
-        System.out.println(" [ Return Book ] \n" );
+       try {
+         System.out.println(" [ Return Book ] \n" );
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter Student Id: ");
         int stdId = scan.nextInt();
@@ -186,6 +211,9 @@ public class App {
                 System.out.println("\nBook does not exist");
             }
         }
+       } catch (Exception e) {
+        System.out.println("\nEnter valid detail");
+    }
 
     }
 
@@ -196,7 +224,8 @@ public class App {
         Book store = new Book();
         Student std = new Student();
        
-        try (Scanner scan = new Scanner(System.in)) {
+      try {
+          try (Scanner scan = new Scanner(System.in)) {
 
             while (true) {
                 System.out.println("\n--------------------------------");
@@ -265,6 +294,15 @@ public class App {
         }
 
          
+         
+
+      } catch (Exception e) {
+        System.out.println("\nEnter Valid Choice ");
+       
+    
+      }
+
+
        
 
 
