@@ -1,6 +1,7 @@
 package PackageBook;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,6 +13,29 @@ public class Book {
     public int BookPages;
     public int BookPrice;
     public String BookAvailable;
+
+
+    public int countIssueBook(){
+        File fp = new File("Book.txt");
+        int count = 0;
+        try (Scanner scan = new Scanner(fp)) {
+            while(scan.hasNextLine()){
+                String[] split = scan.nextLine().split(" ");
+                if(split[5].equals("NO"))
+                {
+                   
+                    count++;
+                }
+            }
+
+
+            
+        } catch (FileNotFoundException e) {
+          
+        }
+        return count;
+
+    }
 
     public boolean checkBookId(int id) {
         boolean flag = false;
@@ -165,6 +189,7 @@ public class Book {
                         System.out.println();
 
                     }
+                    System.out.println("Issued Book : "+countIssueBook());
                     System.out.println("Total Books : " + countBook);
 
                     scan.close(); // Close the Scanner
