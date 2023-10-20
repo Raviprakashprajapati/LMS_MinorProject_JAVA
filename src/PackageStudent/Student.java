@@ -346,8 +346,7 @@ public class Student {
     }
 
 
-    public void returnBook(Book store,int stdId,int bookId)
-    {
+    public void returnBook(Book store,int stdId,int bookId){
         File stdFp = new File("Student.txt");
         File bookFp = new File("Book.txt");
         try {

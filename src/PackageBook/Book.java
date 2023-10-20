@@ -407,9 +407,6 @@ public class Book {
                             // addind new field
                             Scanner sc = new Scanner(System.in);
                             System.out.println("\n[ Modify Book ]");
-                            System.out.println("Enter New Book Id: ");
-                            int ide = sc.nextInt();
-                            sc.nextLine();
                             System.out.println("Enter New Book Name: ");
                             String name = sc.nextLine();
                             System.out.println("Enter New Book Author: ");
@@ -418,7 +415,7 @@ public class Book {
                             int page = sc.nextInt();
                             System.out.println("Enter New Book Price: ");
                             int price = sc.nextInt();
-                            String updateData = String.format("%d %s %s %d %d %s", ide, name, author, page, price,
+                            String updateData = String.format("%d %s %s %d %d %s", id, name, author, page, price,
                                     "YES");
                             ll.set(index, updateData);
                             // System.out.println(ll);
