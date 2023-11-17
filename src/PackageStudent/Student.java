@@ -549,4 +549,16 @@ public class Student {
     }
 
 
+    public void deleteStudentFile() {
+        File fp = new File("Student.txt");
+        if (fp.exists()) {
+            fp.delete();
+            System.out.println("Student.txt Deleted");
+        } else {
+            System.out.println("Student.txt is not exists");
+
+        }
+
+    }
+
 }

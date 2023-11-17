@@ -1,10 +1,19 @@
 # Library Management System
 
 
-This is a simple command-line library management system implemented in Java. It allows users to manage books and students in a library. The system provides functionalities for adding books and students, issuing and returning books, searching for books by ID, modifying book information, and deleting books and students.
+This is a  command-line library management system implemented in Java. It allows users to manage books and students in a library. The system provides functionalities for adding books and students, issuing and returning books, searching for books by ID, modifying book information, and deleting books and students.
 
 
-## Features
+## ADMIN SUPPORT
+
+
+*Admin Login/Signup:* Enhanced security with privileged access.
+
+
+*Database Integration:* Utilizes a structured database for robust data storage.
+
+
+### FEATURES
 
 - **Display Books**: View the list of all books in the library.
 
@@ -25,3 +34,5 @@ This is a simple command-line library management system implemented in Java. It 
 - **Delete Book By ID**: Remove a book from the library.
 
 - **Delete Student**: Unregister a student from the system.
+
+

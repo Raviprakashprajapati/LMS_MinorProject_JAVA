@@ -204,18 +204,7 @@ public class Book {
         }
     }
 
-    public void deleteFile() {
-        File fp = new File("Book.txt");
-        if (fp.exists()) {
-            fp.delete();
-            System.out.println("\nBook.txt Deleted");
-        } else {
-            System.out.println("\nBook.txt is not exists");
-
-        }
-
-    }
-
+    
     public void searchBookById(int id) {
         try {
             File fp = new File("Book.txt");
@@ -454,5 +443,22 @@ public class Book {
         }
 
     }
+
+
+
+    public void deleteBookFile() {
+        File fp = new File("Book.txt");
+        if (fp.exists()) {
+            fp.delete();
+            System.out.println("\nBook.txt Deleted");
+        } else {
+            System.out.println("\nBook.txt is not exists");
+
+        }
+
+    }
+
+
+
 
 }// Book class end here

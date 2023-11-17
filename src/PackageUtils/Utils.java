@@ -65,7 +65,7 @@ public class Utils {
         int price = scan.nextInt();
         store.addBook(id, name, author, page, price);
        } catch (Exception e) {
-    System.out.println("\nEnter valid detail");   
+      System.out.println("\nEnter valid detail");   
     }
 
     DB.databaseBook();
@@ -97,10 +97,6 @@ public class Utils {
             System.out.print("=");
         }
         System.out.println();
-    }
-
-    public  void deleteFileMain(Book store) {
-        store.deleteFile();
     }
 
     public  void deleteBookByIdMain(Book store , LmsDatabase DB) {
@@ -234,7 +230,7 @@ public class Utils {
     }
 
 
-    // DB,fn,store,std
+    //Admin 
     public void signupAdminByMain(LmsDatabase DB,Utils fn,Book store,Student std){
         System.out.println("\n[ SignUp ]\n");
          Scanner scan = new Scanner(System.in);
@@ -276,6 +272,17 @@ public class Utils {
         }
     }
 
+
+    //delete file
+      public  void deleteBookFileMain(Book store) {
+        store.deleteBookFile();
+    }
+
+    public void deleteStudentFileMain(Student std){
+        std.deleteStudentFile();
+    }
+
+   
 
     
 }

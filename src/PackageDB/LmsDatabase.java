@@ -275,7 +275,7 @@ public class LmsDatabase {
                 }
             }
     
-            System.out.println("Data retrieved and written to Student.txt");
+            System.out.println("\nData retrieved and written to Student.txt");
     
             fw.close();
             stm.close();
