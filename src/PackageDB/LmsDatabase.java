@@ -1,19 +1,18 @@
 package PackageDB;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LmsDatabase {
 
-    
- 
+  
     
     public void databaseBook(){
         try {
@@ -60,6 +59,76 @@ public class LmsDatabase {
         }
 
     }
+
+
+    public boolean addNewAdmin(String name, String pass) {
+        boolean adminAdded = false;
+    
+        try {
+            String url = "jdbc:mysql://localhost:3306/LMS";
+            String username = "root";
+            String password = "root123";
+    
+            Connection conn = DriverManager.getConnection(url, username, password);
+    
+            String query = "INSERT INTO admin VALUES (?,?)";
+            PreparedStatement pre = conn.prepareStatement(query);
+            pre.setString(1, name);
+            pre.setString(2, pass);
+    
+            int rowsAffected = pre.executeUpdate();
+            adminAdded = (rowsAffected > 0); // Check if a row was inserted
+
+            pre.close();
+            conn.close();
+        } catch (SQLException e) {
+
+            if(e.getErrorCode() == 1062 )
+            {
+                //handle duplicate entry and print nothing
+            }
+        
+
+        }catch(Exception e)
+        {
+            System.out.println("ERROR IN DATABASE");
+        }
+    
+        return adminAdded;
+    }
+    
+
+
+    public boolean getAdminUser(String username, String password) {
+        boolean isValidUser = false;
+        try {
+            String url = "jdbc:mysql://localhost:3306/LMS";
+            String dbUsername = "root";
+            String dbPassword = "root123";
+    
+            Connection conn = DriverManager.getConnection(url, dbUsername, dbPassword);
+    
+            String query = "SELECT * FROM admin WHERE username = ? AND password = ?";
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+    
+            ResultSet resultSet = preparedStatement.executeQuery();
+    
+            if (resultSet.next()) {
+                isValidUser = true;
+            }
+    
+            resultSet.close();
+            preparedStatement.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Error accessing database: " + e.getMessage());
+        }
+    
+        return isValidUser;
+    }
+    
 
     public void databaseStudent(){
           try {
@@ -216,6 +285,7 @@ public class LmsDatabase {
             e.printStackTrace();
         }
     }
+    
     
    
     

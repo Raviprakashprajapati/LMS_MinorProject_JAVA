@@ -1,10 +1,9 @@
 99 Ruby dennis 123 999 YES
-100 DataStructure anuragbhatnagar 234 499 NO
+100 DataStructure anuragbhatnagar 234 499 YES
 200 javaLearning ravi 456 888 YES
 300 CoreJavaTopic Jane 456 899 YES
 400 JavaForBeginners SarahWhite 250 196 NO
-500 CyberSecurity Anurag 123 667 YES
+500 CyberSecurity AnuragBhatt 345 677 YES
 600 PythonBasics RobertJohnson 290 213 YES
 700 CSharp LauraDavis 360 293 YES
 800 MachineLearning RobertSingh 456 699 YES
-900 AiWithRuby charles 456 899 YES
