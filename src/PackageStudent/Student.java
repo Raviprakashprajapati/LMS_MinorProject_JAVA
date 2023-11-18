@@ -561,4 +561,61 @@ public class Student {
 
     }
 
+
+
+       
+    public void searchStudentById(int id) {
+        try {
+            File fp = new File("Student.txt");
+            if (fp.exists()) {
+
+                Scanner scan = new Scanner(fp);
+                boolean found = false;
+
+                // loop for per line
+                while (scan.hasNextLine()) {
+
+                    String line = scan.nextLine();
+                    // store per line in array
+                    String[] split = line.split(" ");
+                    if (split.length > 0) {
+                        int fileStudentId = Integer.parseInt(split[0]);
+
+                        if (id == fileStudentId) {
+
+                           System.out.printf("%-10s%-20s%-20s%-20s%-30s", split[0], split[1], split[2], split[3],
+                                split[4]);
+                            System.out.println();
+
+                            found = true;
+                            break;
+
+                        }
+
+                    }
+                }
+
+                if (!found) {
+                    System.out.println("\nStudent with ID " + id + " not found.");
+                }
+                scan.close();
+
+            }
+
+            else {
+                System.out.println("\nFile not found ");
+            }
+
+        } catch (Exception e) {
+            System.out.println("\nSomething went wrong\n");
+
+        }
+    }
+
+    
+    
+    
+
+
+
 }

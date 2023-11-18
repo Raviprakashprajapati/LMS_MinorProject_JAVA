@@ -90,6 +90,25 @@ public class Utils {
 
     }
 
+
+    public void searchStudentByIdMain(Student std){
+        try {
+         System.out.println("[ Enter Student ID For Searching ]");
+        Scanner scan = new Scanner(System.in);
+        int id = scan.nextInt();
+        headerStudentMain();
+        std.searchStudentById(id);
+        for (int i = 0; i < 100; i++) {
+            System.out.print("=");
+        }
+        
+       } catch (Exception e) {
+        System.out.println("\nEnter Valid Details");
+    }
+    }
+
+
+
     public  void displayBookMain(Book store) {
         headerMain();
         store.displayBook();
