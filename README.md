@@ -29,6 +29,8 @@ This is a  command-line library management system implemented in Java. It allows
 
 - **Search Book By ID**: Search for a book by its unique ID.
 
+- **Search Student By ID**: Search for a Student by its unique ID.
+
 - **Modify Book By ID**: Update information for a specific book.
 
 - **Delete Book By ID**: Remove a book from the library.
