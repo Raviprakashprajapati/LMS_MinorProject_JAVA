@@ -35,6 +35,12 @@ This is a  command-line library management system implemented in Java. It allows
 
 - **Delete Book By ID**: Remove a book from the library.
 
-- **Delete Student**: Unregister a student from the system.
+- **Delete Student Bi ID**: Unregister a student from the system.
 
+- **Delete Book File**: delete book file after all operation done.
 
+- **Delete student File**: delete student file after all operation done.
+
+- **Backup student Data**: retrive student file from Database to work on it.
+
+- **Backup Book Data**: retrive Book file from Database to work on it.
